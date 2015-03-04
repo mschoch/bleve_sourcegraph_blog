@@ -1,18 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"os"
-)
 
-import "github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve"
+)
 
 type Person struct {
 	Name string
 }
 
-func CreateMyFirstIndex() {
+func main() {
 	mapping := bleve.NewIndexMapping()
 	index, err := bleve.New("people.bleve", mapping)
 	if err != nil {
@@ -24,13 +22,5 @@ func CreateMyFirstIndex() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Indexed Document")
-}
-
-func main() {
-	CreateMyFirstIndex()
-}
-
-func init() {
-	os.RemoveAll("people.bleve")
+	log.Println("Indexed Document")
 }
