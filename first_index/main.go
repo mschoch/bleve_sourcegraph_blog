@@ -12,7 +12,7 @@ type Person struct {
 	Name string
 }
 
-func main() {
+func CreateMyFirstIndex() {
 	mapping := bleve.NewIndexMapping()
 	index, err := bleve.New("people.bleve", mapping)
 	if err != nil {
@@ -25,6 +25,10 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("Indexed Document")
+}
+
+func main() {
+	CreateMyFirstIndex()
 }
 
 func init() {
