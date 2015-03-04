@@ -1,0 +1,9 @@
+#*
+*.sublime-*
+*~
+.#*
+.project
+.settings
+.DS_Store
+/first_index/first_index
+/first_index/*.bleve
