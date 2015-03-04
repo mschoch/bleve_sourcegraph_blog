@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/blevesearch/bleve"
@@ -22,5 +23,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println(result)
+	fmt.Println(result)
 }
