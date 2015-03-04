@@ -14,6 +14,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	QueryStringSearch(index)
+}
+
+func QueryStringSearch(index bleve.Index) {
 	qString := `+description:text summary:"text indexing" summary:believe~2 -description:lucene duration:<30`
 	q := bleve.NewQueryStringQuery(qString)
 	req := bleve.NewSearchRequest(q)
