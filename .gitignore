@@ -7,3 +7,4 @@
 .DS_Store
 /first_index/first_index
 /first_index/*.bleve
+/search_index/search_index
