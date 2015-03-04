@@ -8,3 +8,6 @@
 /first_index/first_index
 /first_index/*.bleve
 /search_index/search_index
+/schedule_index/schedule_index
+/schedule_index/gopherconin.bleve
+/phrase_search_schedule/phrase_search_schedule
