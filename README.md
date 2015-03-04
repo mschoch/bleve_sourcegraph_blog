@@ -71,6 +71,37 @@ The call to the `Index()` method takes two parameters, the first is a unique ide
 Now that we’ve created an index, we want to open it and search:
 
 <script type="text/javascript" src="https://sourcegraph.com/R$3292033@1ed4b03cf8a9ae110c92f35bab693196728d494b===1ed4b03cf8a9ae110c92f35bab693196728d494b/.tree/search_index/main.go/.sourcebox.js"></script>
+<noscript>
+<pre>
+<code>package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/blevesearch/bleve"
+)
+
+type Person struct {
+	Name string
+}
+
+func main() {
+	index, err := bleve.Open("people.bleve")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	query := bleve.NewTermQuery("marty")
+	request := bleve.NewSearchRequest(query)
+	result, err := index.Search(request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(result)
+}</code>
+</pre
+</noscript>
 
 The call to the `Open()` function only takes a single parameter, the path to the index.  The mapping is not needed, as it was serialized into the index at the time it was created.
 
@@ -91,10 +122,38 @@ This shows the one document we put into the index does match this query.
 To see more of the features in action, let's index the <a target="_blank" href="http://www.gophercon.in/talk-schedule/">GopherCon India schedule</a>.  We'll map the data into the structure below:
 
 <script type="text/javascript" src="https://sourcegraph.com/github.com/mschoch/bleve_sourcegraph_blog/.GoPackage/github.com/mschoch/bleve_sourcegraph_blog/schedule_index/.def/main.go/Event/.sourcebox.js"></script>
+<noscript>
+<pre>
+<code>type Event struct {
+	UID         string    `json:"uid"`
+	Summary     string    `json:"summary"`
+	Description string    `json:"description"`
+	Speaker     string    `json:"speaker"`
+	Start       time.Time `json:"start"`
+	Duration    float64   `json:"duration"`
+}</code>
+</pre
+</noscript>
 
 Now let's try a more interesting search.  This time we'll do a phrase search for "quality search results".
 
 <script type="text/javascript" src="https://sourcegraph.com/github.com/mschoch/bleve_sourcegraph_blog/.GoPackage/github.com/mschoch/bleve_sourcegraph_blog/phrase_search_schedule/.def/main.go/PhraseSearch/.sourcebox.js"></script>
+<noscript>
+<pre>
+<code>func PhraseSearch(index bleve.Index) {
+	phrase := []string{"quality", "search", "results"}
+	q := bleve.NewPhraseQuery(phrase, "description")
+	req := bleve.NewSearchRequest(q)
+	req.Highlight = bleve.NewHighlightWithStyle("ansi")
+	req.Fields = []string{"summary", "speaker"}
+	res, err := index.Search(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(res)
+}</code>
+</pre
+</noscript>
 
 When we run this example we get:
 
@@ -111,6 +170,22 @@ When we run this example we get:
 Now let's try one more example.  So far all the queries we've executed have been built programmatically, but sometimes its useful to allow end users build their own queries.  To do this we use a QueryStringQuery:
 
 <script type="text/javascript" src="https://sourcegraph.com/github.com/mschoch/bleve_sourcegraph_blog/.GoPackage/github.com/mschoch/bleve_sourcegraph_blog/query_string_search_schedule/.def/main.go/QueryStringSearch/.sourcebox.js"></script>
+<noscript>
+<pre>
+<code>func QueryStringSearch(index bleve.Index) {
+	qString := `+description:text summary:"text indexing" summary:believe~2 -description:lucene duration:<30`
+	q := bleve.NewQueryStringQuery(qString)
+	req := bleve.NewSearchRequest(q)
+	req.Highlight = bleve.NewHighlightWithStyle("ansi")
+	req.Fields = []string{"summary", "speaker", "description", "duration"}
+	res, err := index.Search(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(res)
+}</code>
+</pre
+</noscript>
 
 This particular QueryString shows many options in use:
 
