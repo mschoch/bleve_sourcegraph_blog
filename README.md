@@ -33,8 +33,7 @@ In just 26 lines of code, we can create our first index:
 <script type="text/javascript" src="https://sourcegraph.com/R$3292033@92ae7448194674f7b2b3ed821eacc7a19530d03d===92ae7448194674f7b2b3ed821eacc7a19530d03d/.tree/first_index/main.go/.sourcebox.js"></script>
 <noscript>
 <pre>
-<code>
-package main
+<code>package main
 
 import (
 	"log"
@@ -59,8 +58,7 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Indexed Document")
-}
-</code>
+}</code>
 </pre
 </noscript>
 
