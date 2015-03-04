@@ -12,7 +12,7 @@ The Lucene/Solr/Elasticsearch ecosystem is great if you're already using Java/JV
     What if we combined 50% of Lucene's text analysis components with an off-the-shelf KV store?
 
 * Initially focus on the most commonly used text analysis components
-* Use Go interaces so that users can fill in the gaps with components for their own languages/domains
+* Use Go interfaces so that users can fill in the gaps with components for their own languages/domains
 * Avoid heavy lifting with a custom file format, lots of interesting KV stores to choose from (currently support <a target="_blank" href="https://github.com/google/leveldb">LevelDB</a>, <a target="_blank" href="https://github.com/boltdb/bolt">Bolt</a>, <a target="_blank" href="https://github.com/couchbase/forestdb">ForestDB</a>)
 
 Features supported:
@@ -62,7 +62,7 @@ To see more of the features in action, let's index the <a target="_blank" href="
 
 <script type="text/javascript" src="https://sourcegraph.com/github.com/mschoch/bleve_sourcegraph_blog/.GoPackage/github.com/mschoch/bleve_sourcegraph_blog/schedule_index/.def/main.go/Event/.sourcebox.js"></script>
 
-Now let's try a more intersting search.  This time we'll do a phrase search for "quality search results".
+Now let's try a more interesting search.  This time we'll do a phrase search for "quality search results".
 
 <script type="text/javascript" src="https://sourcegraph.com/github.com/mschoch/bleve_sourcegraph_blog/.GoPackage/github.com/mschoch/bleve_sourcegraph_blog/phrase_search_schedule/.def/main.go/PhraseSearch/.sourcebox.js"></script>
 
@@ -78,7 +78,7 @@ When we run this example we get:
 	    speaker
 		    Martin Schoch
 
-Now let's try one more example.  So far all the queries we've executed have been built programatically, but sometimes its useful to allow end users build their own queries.  To do this we use a QueryStringQuery:
+Now let's try one more example.  So far all the queries we've executed have been built programmatically, but sometimes its useful to allow end users build their own queries.  To do this we use a QueryStringQuery:
 
 <script type="text/javascript" src="https://sourcegraph.com/github.com/mschoch/bleve_sourcegraph_blog/.GoPackage/github.com/mschoch/bleve_sourcegraph_blog/query_string_search_schedule/.def/main.go/QueryStringSearch/.sourcebox.js"></script>
 
@@ -105,7 +105,7 @@ When we run this example we get:
 
 ## Putting it All Together
 
-Bleve also includes a set of optional HTTP handlers.  These hanlders map all the major bleve operations to HTTP requests and assume that your data and index mappings are encoded in JSON documents.  By combining the GopherCon India schedule index with these HTTP examples its very simple to build a web-based search.
+Bleve also includes a set of optional HTTP handlers.  These handlers map all the major bleve operations to HTTP requests and assume that your data and index mappings are encoded in JSON documents.  By combining the GopherCon India schedule index with these HTTP examples its very simple to build a web-based search.
 
 Here we searched for the term "go":
 
@@ -128,6 +128,6 @@ The community around bleve is <a target="_blank" href="https://github.com/bleves
 
 ## One More Thing...
 
-In anticipation of GopherCon India we created an intial analyzer for Hindi.  It's still experimental, but the foundation is in place for you to help make it better.  To test it out I put together a simple app which allows me to search the Hindi Wikipedia Export.  In the screenshot below you can see me searching for कंप्यूटर (Hindi for 'computer')
+In anticipation of GopherCon India we created an initial analyzer for Hindi.  It's still experimental, but the foundation is in place for you to help make it better.  To test it out I put together a simple app which allows me to search the Hindi Wikipedia Export.  In the screenshot below you can see me searching for कंप्यूटर (Hindi for 'computer')
 
 ![](hindi.png)
