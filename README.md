@@ -220,19 +220,20 @@ We can see the search results include stored fields, snippets for the talk descr
 
 A hosted version of the application is <a target="_blank" href="http://gopherconin.blevesearch.com/search/">available for you to try out yourself</a>.
 
-## Community
-
-The community around bleve is <a target="_blank" href="https://github.com/blevesearch/bleve/graphs/contributors">growing</a>.  We can't accomplish all of our goals for this project with building a community of users interested in improving support for their languages.  
-
 ## Roadmap
+
+Bleve is still very much under active development.  However, a very useful set of functionality is already available.  We hope to wrap up a few key features and then prepare for a 1.0 stable release.
 
 * Search Result Sorting (currently only by score)
 * Improved Spelling Suggest / Fuzzy Search
 * Performance (focus has been on features/API)
-* Prepare for 1.0 Release (stable API/disk format)
 
 ## One More Thing...
 
 In anticipation of GopherCon India we created an initial analyzer for Hindi.  It's still experimental, but the foundation is in place for you to help make it better.  To test it out I put together a simple app which allows me to search the Hindi Wikipedia Export.  In the screenshot below you can see me searching for कंप्यूटर (Hindi for 'computer')
 
 ![](hindi.png)
+
+## Join the Community
+
+The community around bleve is <a target="_blank" href="https://github.com/blevesearch/bleve/graphs/contributors">growing</a>.  We can't accomplish all of our goals for this project with building a community of users interested in improving support for their languages.  Join us at <a target="_blank" href="http://www.blevesearch.com">blevesearch.com</a>.
