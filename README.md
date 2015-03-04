@@ -31,7 +31,38 @@ Installing bleve is easy, the **go get** command installs the library and helpfu
 In just 26 lines of code, we can create our first index:
 
 <script type="text/javascript" src="https://sourcegraph.com/R$3292033@92ae7448194674f7b2b3ed821eacc7a19530d03d===92ae7448194674f7b2b3ed821eacc7a19530d03d/.tree/first_index/main.go/.sourcebox.js"></script>
-<noscript>Indexing Example 1</noscript>
+<noscript>
+<pre>
+<code>
+package main
+
+import (
+	"log"
+
+	"github.com/blevesearch/bleve"
+)
+
+type Person struct {
+	Name string
+}
+
+func main() {
+	mapping := bleve.NewIndexMapping()
+	index, err := bleve.New("people.bleve", mapping)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	person := Person{"Marty Schoch"}
+	err = index.Index("m1", person)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Indexed Document")
+}
+</code>
+</pre
+</noscript>
 
 The `mapping` is a default Index Mapping.  The Index Mapping is responsible for describing how your documents should be mapped into the index.  The default mapping is designed to work well out of the box, but you'll want to revisit this to improve the quality of your search results.
 
