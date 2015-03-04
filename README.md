@@ -19,8 +19,8 @@ Features supported:
 
 * Index any Go structure (strings, numeric values, and dates supported)
 * Search (Term, Phrase, Match, MatchPhrase, Boolean, Fuzzy, Numeric Range, Date Range)
-* Search Results with TF/IDF scoring, contextual snippets and <span style="background-color: yellow">term highlighting</span>
-* Search Result Faceting (term, numeric, date)
+* Search results with TF/IDF scoring, contextual snippets and <span style="background-color: yellow">term highlighting</span>
+* Search result faceting (term, numeric, date)
 
 ## Getting Started
 
@@ -31,6 +31,7 @@ Installing bleve is easy, the **go get** command installs the library and helpfu
 In just 26 lines of code, we can create our first index:
 
 <script type="text/javascript" src="https://sourcegraph.com/R$3292033@92ae7448194674f7b2b3ed821eacc7a19530d03d===92ae7448194674f7b2b3ed821eacc7a19530d03d/.tree/first_index/main.go/.sourcebox.js"></script>
+<noscript>Indexing Example 1</noscript>
 
 The `mapping` is a default Index Mapping.  The Index Mapping is responsible for describing how your documents should be mapped into the index.  The default mapping is designed to work well out of the box, but you'll want to revisit this to improve the quality of your search results.
 
