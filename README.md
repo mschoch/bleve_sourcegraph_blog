@@ -212,7 +212,7 @@ When we run this example we get:
 
 ## Putting it All Together
 
-Bleve also includes a set of optional HTTP handlers.  These handlers map all the major bleve operations to HTTP requests and assume that your data and index mappings are encoded in JSON documents.  By combining the GopherCon India schedule index with these HTTP examples its very simple to build a web-based search.
+Bleve also includes a set of optional HTTP handlers.  These handlers map all the major bleve operations to HTTP requests and assume that your data and index mappings are encoded in JSON documents.  By combining the GopherCon India Schedule index with these HTTP handlers its very simple to build a web-based search.
 
 Here we searched for the term "go":
 
