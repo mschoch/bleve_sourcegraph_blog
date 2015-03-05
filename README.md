@@ -175,7 +175,7 @@ Now let's try one more example.  So far all the queries we've executed have been
 <noscript>
 <pre>
 <code>func QueryStringSearch(index bleve.Index) {
-	qString := `+description:text summary:"text indexing" summary:believe~2 -description:lucene duration:<30`
+	qString := `+description:text summary:"text indexing" summary:believe~2 -description:lucene duration:&lt;30`
 	q := bleve.NewQueryStringQuery(qString)
 	req := bleve.NewSearchRequest(q)
 	req.Highlight = bleve.NewHighlightWithStyle("ansi")
