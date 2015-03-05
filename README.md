@@ -13,7 +13,7 @@ The Lucene/Solr/Elasticsearch ecosystem is great if you're already using Java/JV
 
 * Initially focus on the most commonly used text analysis components
 * Use Go interfaces so that users can fill in the gaps with components for their own languages/domains
-* Avoid heavy lifting with a custom file format, lots of interesting KV stores to choose from (currently support <a target="_blank" href="https://github.com/google/leveldb">LevelDB</a>, <a target="_blank" href="https://github.com/boltdb/bolt">Bolt</a>, <a target="_blank" href="https://github.com/couchbase/forestdb">ForestDB</a>)
+* Avoid heavy lifting with a custom file format, lots of interesting KV stores to choose from (currently supported <a target="_blank" href="https://github.com/google/leveldb">LevelDB</a>, <a target="_blank" href="https://github.com/boltdb/bolt">Bolt</a>, <a target="_blank" href="https://github.com/couchbase/forestdb">ForestDB</a>)
 
 Features supported:
 
@@ -24,9 +24,11 @@ Features supported:
 
 ## Getting Started
 
-Installing bleve is easy, the **go get** command installs the library and helpful command-line utilities.
+Installing bleve is easy, the **go get** command installs the library.
 
     $ go get github.com/blevesearch/bleve/...
+
+**NOTE**: including the trailing /... will also install some helpful command-line utilities.
 
 In just 26 lines of code, we can create our first index:
 
@@ -64,9 +66,9 @@ func main() {
 
 The `mapping` is a default Index Mapping.  The Index Mapping is responsible for describing how your documents should be mapped into the index.  The default mapping is designed to work well out of the box, but you'll want to revisit this to improve the quality of your search results.
 
-The call to the `New()` function takes two parameters, the first is the path to the index and the second is the `mapping` to be used for this index.
+The call to the `New()` function takes two parameters, the first is the path to a directory where the index will be stored and the second is the `mapping` to be used for this index.
 
-The call to the `Index()` method takes two parameters, the first is a unique identifier for the document, and the second is the object to be indexed.
+The call to the `Index()` method takes two parameters, the first is a unique identifier for the document, and the second is the document (a Go struct) to be indexed.
 
 Now that we’ve created an index, we want to open it and search:
 
@@ -103,7 +105,7 @@ func main() {
 </pre
 </noscript>
 
-The call to the `Open()` function only takes a single parameter, the path to the index.  The mapping is not needed, as it was serialized into the index at the time it was created.
+The call to the `Open()` function only takes a single parameter, the path to the index.  The mapping is not needed, as it was serialized into the index at the time of creation.
 
 The `query` describes what we're looking for.  In this case it is a TermQuery, the simplest kind of query.  Term queries looks for an exact match of the specified term in the index.
 
